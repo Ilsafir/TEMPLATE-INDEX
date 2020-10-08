@@ -1,1 +1,1 @@
-# TEMPLATE-INDEX
+# Vanilla Template, No Dependencies
