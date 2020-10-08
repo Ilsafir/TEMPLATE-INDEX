@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang = 'en-US' dir = 'ltr'>
+  <head>
+  <meta charset = 'utf-8'>
+  <title>Pure JS / CSS / HTML Template</title>
+  <!-- <link rel="shortcut icon" type="image/png" href="http://example.com/favicon.png"/> -->
+  <style type = 'text/css'>
+   /* remove all CSS default styles. `text/css` HAS to be defined, else old-ass browsers like IE will never execute it, which is poor degradation. */
+   
+    * { margin: 0; padding: 0; border: 0; font-size: 100%; box-sizing: border-box; }
+
+    main, article, aside, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+
+    nav ul { list-style: none; }
+
+	</style>
+	<style type = 'text/css'>
+	  body { padding: 8px; }
+    .centered { text-align: center; }
+	  .js { display: none; }
+	</style>
+
+	<!-- <script src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script> -->
+  <!-- <script> window.jQuery || document.write('<script src = "jquery-1.12.4.js><\/script>') </script> -->
+	<!-- <script src = 'normalize-1.1.0.js'></script> https://github.com/Ilsafir/normalize -->
+	<script src = 'ready-1.2.6.js'></script> <!-- https://github.com/Ilsafir/DOMContentLoaded -->
+	<script src = 'foreach.js'></script>
+	<script>
+  // I personally exclude all browsers pre IE-11, but I like using <main> for both obsolete and modern browsers, so I compat-define it here.
+ 	"main nav section".replace(/w+/g, function(a) { document.createElement(a); }); // mini-html5shiv.
+  
+  </script>
+  <script id = 'uncomment-for-vanilla'>
+  /* function DOMContentLoaded(func) { // Y U NO USING? You wont find a better polyfill for this. trust me.
+      var alreadyRun, ael = 'addEventListener';
+      if (ael in document) { document[ael]('DOMContentLoaded', ready, false); window[ael]('load', ready, false); }
+      else { window.onload = ready } function ready() { if (alreadyRun) {return} alreadyRun = true; func(); }
+  }
+  */
+  </script>
+  <script>
+  function remove(node) { if (node.parentNode) { node.parentNode.removeChild(node) } } // remove a node from the tree, unless it's not in the tree already
+
+  DOMContentLoaded(function(e) {
+
+	  var noscript = document.getElementById('no-js');
+	  var main = document.getElementById('js');
+
+	  remove( noscript );
+	  main.style.display = 'block';
+
+  });
+  </script>
+  </head>
+	<body>
+  <!-- has to be within a noscript, else users that have JS enabled but are waiting for DOMContentLoaded to fire will still see this. -->
+	<noscript id = 'no-js'> 
+	  <div class = 'centered'>
+  		<h3>Hello. This site requires JavaScript to run.</h3>
+      <br>
+  		<h4>Please reload the site with JavaScript enabled:</h4>
+
+  		<a href = "#">Reload</a>
+  		<a href = '#'>Go 90s</a>
+  		<a href = 'https://www.google.com'>Go to Google</a>
+	  </div>
+	</noscript>
+	<main id = 'js'>
+	  <!-- now to filter obsolete browsers, non obsolete browsers -->
+	</main>
+	</body>
+</html>
